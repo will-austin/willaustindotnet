@@ -1041,49 +1041,29 @@ img {
 }
 
 .company-logo {
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
     border-radius: var(--radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.4rem;
+    background: white;
+    padding: 6px;
+    overflow: hidden;
     transition: all var(--transition-fast);
+    flex-shrink: 0;
 }
 
-/* Brand-specific colors */
-.company-logo.cigna {
-    background: linear-gradient(135deg, #0072ce, #00a3e0);
-    color: white;
-}
-
-.company-logo.wbd {
-    background: linear-gradient(135deg, #0033a0, #005eb8);
-    color: white;
-}
-
-.company-logo.scripps-networks {
-    background: linear-gradient(135deg, #ff6900, #ff8c00);
-    color: white;
-}
-
-.company-logo.scripps {
-    background: linear-gradient(135deg, #c41230, #e31837);
-    color: white;
-}
-
-.company-logo.edfinancial {
-    background: linear-gradient(135deg, #1e3a5f, #2d5a87);
-    color: white;
-}
-
-.company-logo.att {
-    background: linear-gradient(135deg, #009fdb, #00b5e2);
-    color: white;
+.company-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 4px;
 }
 
 .experience-card:hover .company-logo {
     transform: scale(1.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .card-meta {
