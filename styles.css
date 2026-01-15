@@ -1175,6 +1175,52 @@ img {
     color: var(--color-bg);
 }
 
+/* Brands Preview */
+.brands-preview {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-md);
+    margin-bottom: var(--space-md);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+}
+
+.brands-preview:hover {
+    border-color: var(--color-primary);
+    background: var(--color-primary-dim);
+}
+
+.brands-logos {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.brands-logos img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    border-radius: 4px;
+    background: white;
+    padding: 4px;
+}
+
+.brands-link {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.brands-link i {
+    font-size: 0.7rem;
+}
+
 /* Education Block */
 .education-block {
     margin-top: var(--space-4xl);
