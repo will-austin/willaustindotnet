@@ -1279,110 +1279,128 @@ img {
    Testimonials Section
    ============================================ */
 
-.testimonials-slider {
+/* Featured Testimonial */
+.featured-testimonial {
+    padding: var(--space-2xl) var(--space-3xl);
+    margin-bottom: var(--space-2xl);
+    text-align: center;
     position: relative;
     overflow: hidden;
 }
 
-.testimonials-track {
-    display: flex;
-    gap: var(--space-xl);
-    transition: transform 0.5s ease;
+.featured-testimonial::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-primary);
 }
 
-.testimonial-card {
-    min-width: calc(50% - var(--space-xl) / 2);
-    padding: var(--space-xl);
-    flex-shrink: 0;
-}
-
-.quote-icon {
-    font-size: 2rem;
+.featured-quote {
+    font-size: 3rem;
     color: var(--color-primary);
-    opacity: 0.5;
+    opacity: 0.3;
     margin-bottom: var(--space-md);
 }
 
-.quote-text {
-    font-size: 1.1rem;
+.featured-text {
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
     line-height: 1.8;
-    color: var(--color-text-secondary);
-    margin-bottom: var(--space-lg);
-    font-style: italic;
+    color: var(--color-text);
+    font-weight: 400;
+    margin-bottom: var(--space-xl);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.quote-author {
+.featured-author {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: var(--space-xs);
 }
 
-.author-info {
+.featured-author .author-title {
+    font-weight: 600;
+    color: var(--color-primary);
+    font-size: 1rem;
+}
+
+.featured-author .author-relation {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+}
+
+/* Testimonials Grid */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+}
+
+.testimonial-card {
+    padding: var(--space-lg);
     display: flex;
     flex-direction: column;
 }
 
+.quote-text {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-lg);
+    flex-grow: 1;
+}
+
+.quote-text::before {
+    content: '"';
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 0;
+    margin-right: 4px;
+}
+
+.quote-author {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border);
+}
+
 .author-title {
     font-weight: 600;
+    font-size: 0.9rem;
     color: var(--color-text);
 }
 
 .author-relation {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--color-text-muted);
 }
 
-.quote-author i {
-    font-size: 1.25rem;
-    color: var(--color-text-muted);
+/* Responsive Grid */
+@media (max-width: 1024px) {
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .featured-testimonial {
+        padding: var(--space-xl);
+    }
 }
 
-.slider-controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-lg);
-    margin-top: var(--space-xl);
-}
-
-.slider-btn {
-    width: 48px;
-    height: 48px;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all var(--transition-fast);
-    color: var(--color-text);
-}
-
-.slider-btn:hover {
-    background: var(--color-primary);
-    border-color: var(--color-primary);
-    color: var(--color-bg);
-}
-
-.slider-dots {
-    display: flex;
-    gap: var(--space-sm);
-}
-
-.slider-dot {
-    width: 8px;
-    height: 8px;
-    background: var(--color-border);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all var(--transition-fast);
-}
-
-.slider-dot.active {
-    background: var(--color-primary);
-    width: 24px;
-    border-radius: var(--radius-full);
+@media (max-width: 640px) {
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .featured-text {
+        font-size: 1.1rem;
+    }
 }
 
 /* ============================================
@@ -1530,10 +1548,6 @@ img {
     
     .skills-grid {
         grid-template-columns: 1fr;
-    }
-    
-    .testimonial-card {
-        min-width: 100%;
     }
     
     .contact-cards {

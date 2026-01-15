@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initTypingEffect();
     initNavigation();
     initStatsCounter();
-    initTestimonialsSlider();
     initScrollAnimations();
     initTimelineProgress();
     initSmoothScroll();
@@ -141,92 +140,6 @@ function initStatsCounter() {
     }, { threshold: 0.5 });
 
     stats.forEach(stat => observer.observe(stat));
-}
-
-/**
- * Testimonials Slider
- */
-function initTestimonialsSlider() {
-    const track = document.getElementById('testimonialsTrack');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const dotsContainer = document.getElementById('sliderDots');
-
-    if (!track || !prevBtn || !nextBtn) return;
-
-    const cards = track.querySelectorAll('.testimonial-card');
-    let currentIndex = 0;
-    let cardsPerView = window.innerWidth > 1024 ? 2 : 1;
-
-    // Create dots
-    const totalSlides = Math.ceil(cards.length / cardsPerView);
-    for (let i = 0; i < totalSlides; i++) {
-        const dot = document.createElement('div');
-        dot.classList.add('slider-dot');
-        if (i === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => goToSlide(i));
-        dotsContainer.appendChild(dot);
-    }
-
-    const dots = dotsContainer.querySelectorAll('.slider-dot');
-
-    function updateSlider() {
-        const cardWidth = cards[0].offsetWidth + 24; // Including gap
-        track.style.transform = `translateX(-${currentIndex * cardWidth * cardsPerView}px)`;
-
-        dots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === currentIndex);
-        });
-    }
-
-    function goToSlide(index) {
-        currentIndex = Math.max(0, Math.min(index, totalSlides - 1));
-        updateSlider();
-    }
-
-    function nextSlide() {
-        currentIndex = (currentIndex + 1) % totalSlides;
-        updateSlider();
-    }
-
-    function prevSlide() {
-        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-        updateSlider();
-    }
-
-    prevBtn.addEventListener('click', prevSlide);
-    nextBtn.addEventListener('click', nextSlide);
-
-    // Auto-advance every 5 seconds
-    let autoSlide = setInterval(nextSlide, 5000);
-
-    // Pause on hover
-    track.addEventListener('mouseenter', () => clearInterval(autoSlide));
-    track.addEventListener('mouseleave', () => {
-        autoSlide = setInterval(nextSlide, 5000);
-    });
-
-    // Handle resize
-    window.addEventListener('resize', () => {
-        const newCardsPerView = window.innerWidth > 1024 ? 2 : 1;
-        if (newCardsPerView !== cardsPerView) {
-            cardsPerView = newCardsPerView;
-            currentIndex = 0;
-            
-            // Rebuild dots
-            dotsContainer.innerHTML = '';
-            const newTotalSlides = Math.ceil(cards.length / cardsPerView);
-            for (let i = 0; i < newTotalSlides; i++) {
-                const dot = document.createElement('div');
-                dot.classList.add('slider-dot');
-                if (i === 0) dot.classList.add('active');
-                dot.addEventListener('click', () => goToSlide(i));
-                dotsContainer.appendChild(dot);
-            }
-            
-            updateSlider();
-        }
-    });
 }
 
 /**
