@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Will Austin - Leadership Circle 360 Assessment Results" />
+    <meta name="author" content="Will Austin" />
+    <title>Leadership Circle Profile | Will Austin</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    
+    <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link href="styles.css" rel="stylesheet" />
+    <style>
+        /* Leadership Circle Page Specific Styles */
+        .lc-hero {
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px var(--space-xl) var(--space-2xl);
+        }
+        
+        .lc-hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: var(--space-md);
+        }
+        
+        .lc-hero h1 span {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .lc-hero .subtitle {
+            font-size: 1.1rem;
+            color: var(--color-text-secondary);
+            max-width: 700px;
+            margin: 0 auto var(--space-lg);
+        }
+        
+        .assessment-meta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-lg);
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-sm) var(--space-md);
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-full);
+            font-size: 0.85rem;
+            color: var(--color-text-secondary);
+        }
+        
+        .meta-item i {
+            color: var(--color-primary);
+        }
+        
+        .back-link {
+            position: fixed;
+            top: var(--space-xl);
+            left: var(--space-xl);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-sm) var(--space-md);
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-full);
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            z-index: 100;
+            transition: all var(--transition-fast);
+        }
+        
+        .back-link:hover {
+            color: var(--color-primary);
+            border-color: var(--color-primary);
+        }
+        
+        /* Framework Explanation */
+        .framework-section {
+            background: var(--gradient-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            margin-bottom: var(--space-3xl);
+        }
+        
+        .framework-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-2xl);
+            align-items: center;
+        }
+        
+        .framework-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-md);
+        }
+        
+        .framework-text p {
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+            margin-bottom: var(--space-md);
+        }
+        
+        .framework-visual {
+            display: flex;
+            justify-content: center;
+        }
+        
+        /* Circle Diagram */
+        .circle-diagram {
+            width: 300px;
+            height: 300px;
+            position: relative;
+        }
+        
+        .circle-half {
+            position: absolute;
+            width: 100%;
+            height: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 0.1em;
+        }
+        
+        .circle-half.creative {
+            top: 0;
+            background: linear-gradient(180deg, rgba(0, 212, 170, 0.2) 0%, rgba(0, 212, 170, 0.05) 100%);
+            border-radius: 150px 150px 0 0;
+            border: 2px solid var(--color-primary);
+            border-bottom: none;
+            color: var(--color-primary);
+            padding-top: var(--space-lg);
+            align-items: flex-start;
+        }
+        
+        .circle-half.reactive {
+            bottom: 0;
+            background: linear-gradient(0deg, rgba(99, 102, 241, 0.2) 0%, rgba(99, 102, 241, 0.05) 100%);
+            border-radius: 0 0 150px 150px;
+            border: 2px solid var(--color-secondary);
+            border-top: none;
+            color: var(--color-secondary);
+            padding-bottom: var(--space-lg);
+            align-items: flex-end;
+        }
+        
+        .circle-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: var(--color-bg);
+            border: 3px solid var(--color-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            z-index: 2;
+        }
+        
+        .axis-label {
+            position: absolute;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .axis-label.task {
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .axis-label.relationship {
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Dimensions Grid */
+        .dimensions-section {
+            margin-bottom: var(--space-3xl);
+        }
+        
+        .dimensions-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .dimension-group {
+            background: var(--gradient-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+        }
+        
+        .dimension-group.creative {
+            border-top: 3px solid var(--color-primary);
+        }
+        
+        .dimension-group.reactive {
+            border-top: 3px solid var(--color-secondary);
+        }
+        
+        .group-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .group-header i {
+            font-size: 1.25rem;
+        }
+        
+        .creative .group-header i {
+            color: var(--color-primary);
+        }
+        
+        .reactive .group-header i {
+            color: var(--color-secondary);
+        }
+        
+        .group-header h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .group-header span {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+        }
+        
+        .dimension-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+        
+        .dimension-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-sm) var(--space-md);
+            background: var(--color-surface);
+            border-radius: var(--radius-md);
+        }
+        
+        .dimension-item span {
+            font-size: 0.9rem;
+        }
+        
+        .dimension-item .desc {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+        }
+        
+        /* Key Takeaways */
+        .takeaways-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-lg);
+            margin-bottom: var(--space-3xl);
+        }
+        
+        .takeaway-card {
+            background: var(--gradient-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            text-align: center;
+            transition: all var(--transition-base);
+        }
+        
+        .takeaway-card:hover {
+            border-color: var(--color-border-hover);
+            transform: translateY(-4px);
+        }
+        
+        .takeaway-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--color-primary-dim);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-md);
+            font-size: 1.25rem;
+            color: var(--color-primary);
+        }
+        
+        .takeaway-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .takeaway-card p {
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+        
+        /* Balance Indicator */
+        .balance-section {
+            background: var(--gradient-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            text-align: center;
+            margin-bottom: var(--space-3xl);
+        }
+        
+        .balance-section h3 {
+            font-size: 1.25rem;
+            margin-bottom: var(--space-md);
+        }
+        
+        .balance-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-xl);
+            margin: var(--space-xl) 0;
+        }
+        
+        .balance-end {
+            text-align: center;
+        }
+        
+        .balance-end i {
+            font-size: 2rem;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .balance-end.task i {
+            color: var(--color-primary);
+        }
+        
+        .balance-end.relationship i {
+            color: var(--color-accent);
+        }
+        
+        .balance-end span {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .balance-bar {
+            width: 200px;
+            height: 8px;
+            background: var(--color-surface);
+            border-radius: var(--radius-full);
+            position: relative;
+        }
+        
+        .balance-indicator {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            border: 3px solid var(--color-bg);
+        }
+        
+        .balance-label {
+            display: inline-block;
+            padding: var(--space-sm) var(--space-lg);
+            background: var(--color-primary-dim);
+            color: var(--color-primary);
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .framework-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-xl);
+            }
+            
+            .dimensions-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .takeaways-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .back-link {
+                top: var(--space-md);
+                left: var(--space-md);
+            }
+            
+            .assessment-meta {
+                flex-direction: column;
+            }
+            
+            .circle-diagram {
+                width: 250px;
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <!-- Back Link -->
+    <a href="index.html" class="back-link">
+        <i class="fas fa-arrow-left"></i>
+        <span>Back to Portfolio</span>
+    </a>
+
+    <!-- Hero -->
+    <section class="lc-hero">
+        <div>
+            <h1>Leadership Circle <span>Profile</span></h1>
+            <p class="subtitle">
+                The Leadership Circle Profile® is the most comprehensive 360-degree leadership assessment 
+                available, measuring both Creative competencies and Reactive tendencies to reveal the 
+                underlying beliefs that drive leadership behavior.
+            </p>
+            <div class="assessment-meta">
+                <div class="meta-item">
+                    <i class="fas fa-building"></i>
+                    <span>Scripps Networks Interactive</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>July 2012</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>LCP 360 Certification</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Framework Section -->
+    <section class="section">
+        <div class="section-container">
+            <div class="framework-section">
+                <div class="framework-grid">
+                    <div class="framework-text">
+                        <h3>Understanding the Framework</h3>
+                        <p>
+                            The Leadership Circle Profile organizes leadership competencies into two primary domains: 
+                            <strong>Creative</strong> competencies (top half) represent leadership behaviors that 
+                            lead to high fulfillment and effectiveness. <strong>Reactive</strong> tendencies 
+                            (bottom half) reflect leadership behaviors that limit effectiveness and authentic expression.
+                        </p>
+                        <p>
+                            The assessment measures across two key axes: <strong>Task</strong> (achieving results) 
+                            and <strong>Relationship</strong> (fostering connections), providing insight into 
+                            leadership balance and style.
+                        </p>
+                    </div>
+                    <div class="framework-visual">
+                        <div class="circle-diagram">
+                            <span class="axis-label task">Task</span>
+                            <div class="circle-half creative">CREATIVE</div>
+                            <div class="circle-half reactive">REACTIVE</div>
+                            <div class="circle-center">Identity</div>
+                            <span class="axis-label relationship">Relationship</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dimensions -->
+    <section class="section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Assessment Dimensions</span>
+                <h2 class="section-title">Creative & Reactive Competencies</h2>
+            </div>
+            
+            <div class="dimensions-section">
+                <div class="dimensions-row">
+                    <!-- Creative Dimensions -->
+                    <div class="dimension-group creative">
+                        <div class="group-header">
+                            <i class="fas fa-arrow-up"></i>
+                            <div>
+                                <h3>Creative Competencies</h3>
+                                <span>Effectiveness-driving behaviors</span>
+                            </div>
+                        </div>
+                        <div class="dimension-list">
+                            <div class="dimension-item">
+                                <span>Achieving</span>
+                                <span class="desc">Results-oriented leadership</span>
+                            </div>
+                            <div class="dimension-item">
+                                <span>Systems Awareness</span>
+                                <span class="desc">Big-picture thinking</span>
+                            </div>
+                            <div class="dimension-item">
+                                <span>Authenticity</span>
+                                <span class="desc">Genuine self-expression</span>
+                            </div>
+                            <div class="dimension-item">
+                                <span>Self-Awareness</span>
+                                <span class="desc">Personal insight & growth</span>
+                            </div>
+                            <div class="dimension-item">
+                                <span>Relating</span>
+                                <span class="desc">Building connections</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Reactive Dimensions -->
+                    <div class="dimension-group reactive">
+                        <div class="group-header">
+                            <i class="fas fa-arrow-down"></i>
+                            <div>
+                                <h3>Reactive Tendencies</h3>
+                                <span>Self-limiting behaviors</span>
+                            </div>
+                        </div>
+                        <div class="dimension-list">
+                            <div class="dimension-item">
+                                <span>Controlling</span>
+                                <span class="desc">Over-managing outcomes</span>
+                            </div>
+                            <div class="dimension-item">
+                                <span>Protecting</span>
+                                <span class="desc">Defensive positioning</span>
+                            </div>
+                            <div class="dimension-item">
+                                <span>Complying</span>
+                                <span class="desc">Excessive accommodation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Balance Section -->
+    <section class="section">
+        <div class="section-container">
+            <div class="balance-section">
+                <h3>Relationship-Task Balance</h3>
+                <p style="color: var(--color-text-secondary); max-width: 600px; margin: 0 auto;">
+                    Effective leadership requires balancing task-focused achievement with 
+                    relationship-building. This assessment indicates a well-balanced approach.
+                </p>
+                <div class="balance-visual">
+                    <div class="balance-end relationship">
+                        <i class="fas fa-users"></i>
+                        <span>Relationship</span>
+                    </div>
+                    <div class="balance-bar">
+                        <div class="balance-indicator"></div>
+                    </div>
+                    <div class="balance-end task">
+                        <i class="fas fa-bullseye"></i>
+                        <span>Task</span>
+                    </div>
+                </div>
+                <span class="balance-label">High Balance</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Takeaways -->
+    <section class="section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Key Insights</span>
+                <h2 class="section-title">Leadership Strengths</h2>
+            </div>
+            
+            <div class="takeaways-grid">
+                <div class="takeaway-card">
+                    <div class="takeaway-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h4>Balanced Approach</h4>
+                    <p>Demonstrates high balance between task achievement and relationship building, enabling effective leadership across diverse situations.</p>
+                </div>
+                
+                <div class="takeaway-card">
+                    <div class="takeaway-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h4>Systems Thinking</h4>
+                    <p>Strong awareness of organizational systems and how different parts interconnect, enabling strategic decision-making.</p>
+                </div>
+                
+                <div class="takeaway-card">
+                    <div class="takeaway-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h4>Authentic Leadership</h4>
+                    <p>Leads with authenticity and self-awareness, building trust and credibility with team members and stakeholders.</p>
+                </div>
+                
+                <div class="takeaway-card">
+                    <div class="takeaway-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4>Achievement Focus</h4>
+                    <p>Results-oriented approach ensures goals are met while maintaining positive team dynamics and engagement.</p>
+                </div>
+                
+                <div class="takeaway-card">
+                    <div class="takeaway-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>Relational Strength</h4>
+                    <p>Skilled at building and maintaining meaningful professional relationships that drive collaboration and success.</p>
+                </div>
+                
+                <div class="takeaway-card">
+                    <div class="takeaway-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h4>Self-Development</h4>
+                    <p>Commitment to personal growth and continuous improvement as demonstrated by pursuing leadership assessments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About the Assessment -->
+    <section class="section">
+        <div class="section-container">
+            <div class="framework-section" style="text-align: center;">
+                <h3 style="margin-bottom: var(--space-md);">About The Leadership Circle Profile®</h3>
+                <p style="color: var(--color-text-secondary); max-width: 700px; margin: 0 auto var(--space-lg);">
+                    The Leadership Circle Profile is the only 360-degree assessment that measures both 
+                    Creative competencies and Reactive tendencies, providing leaders with a comprehensive 
+                    view of their leadership effectiveness. Developed by Bob Anderson, it is used by 
+                    organizations worldwide for leadership development.
+                </p>
+                <p style="color: var(--color-text-muted); font-size: 0.9rem;">
+                    Based on the Kouzes and Posner leadership framework
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>Leadership Circle Profile® is a registered trademark of The Leadership Circle</p>
+            <p style="margin-top: var(--space-sm);">&copy; 2026 Will Austin</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="scripts.js"></script>
+</body>
+</html>
