@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EOA AI-Augmented Delivery | Plan Overview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --bg-card-hover: #334155;
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --accent-green: #10b981;
+            --accent-amber: #f59e0b;
+            --accent-red: #ef4444;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-dark) 100%);
+            border-bottom: 1px solid var(--border);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid var(--accent-blue);
+            color: var(--accent-blue);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        /* Before/After */
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .comparison-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .comparison-card.before {
+            border-color: var(--accent-red);
+            border-style: dashed;
+        }
+
+        .comparison-card.after {
+            border-color: var(--accent-green);
+        }
+
+        .comparison-label {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .comparison-card.before .comparison-label {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--accent-red);
+        }
+
+        .comparison-card.after .comparison-label {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent-green);
+        }
+
+        .comparison-card h4 {
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .comparison-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .comparison-card li {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            padding: 0.25rem 0;
+            padding-left: 1.25rem;
+            position: relative;
+        }
+
+        .comparison-card.before li::before {
+            content: "✗";
+            position: absolute;
+            left: 0;
+            color: var(--accent-red);
+        }
+
+        .comparison-card.after li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-green);
+        }
+
+        /* Architecture Diagram */
+        .architecture {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            overflow-x: auto;
+        }
+
+        .architecture pre {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.8rem;
+            line-height: 1.4;
+            color: var(--text-secondary);
+        }
+
+        /* Layers */
+        .layer {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        .layer-number {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .layer-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .layer-content .subtitle {
+            color: var(--accent-blue);
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+
+        .layer-content p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .layer.highlight {
+            border-color: var(--accent-green);
+            background: rgba(16, 185, 129, 0.05);
+        }
+
+        .layer.highlight .layer-number {
+            background: linear-gradient(135deg, var(--accent-green), #059669);
+        }
+
+        /* Goals */
+        .goal-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-align: center;
+        }
+
+        .goal-card .icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .goal-card h4 {
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .goal-card p {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* Status */
+        .status-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .status-item:last-child {
+            border-bottom: none;
+        }
+
+        .status-check {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .status-check.done {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent-green);
+        }
+
+        .status-check.progress {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--accent-amber);
+        }
+
+        .status-check.pending {
+            background: var(--bg-card-hover);
+            color: var(--text-muted);
+        }
+
+        .status-text {
+            flex: 1;
+        }
+
+        .status-text.done {
+            color: var(--text-primary);
+        }
+
+        .status-text.pending {
+            color: var(--text-muted);
+        }
+
+        /* Table */
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+        }
+
+        td {
+            font-size: 0.95rem;
+        }
+
+        /* Quote */
+        .quote {
+            background: var(--bg-card);
+            border-left: 4px solid var(--accent-blue);
+            border-radius: 0 12px 12px 0;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .quote p {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .quote cite {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: normal;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            margin-top: 2rem;
+        }
+
+        /* Highlight box */
+        .highlight-box {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid var(--accent-blue);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box h4 {
+            color: var(--accent-blue);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-box p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Tag */
+        .tag {
+            display: inline-block;
+            background: var(--bg-card-hover);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-right: 0.25rem;
+        }
+
+        .tag.blue { background: rgba(59, 130, 246, 0.2); color: var(--accent-blue); }
+        .tag.green { background: rgba(16, 185, 129, 0.2); color: var(--accent-green); }
+        .tag.purple { background: rgba(139, 92, 246, 0.2); color: var(--accent-purple); }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-badge">Strategic Initiative</div>
+        <h1>AI-Augmented Analytics Delivery</h1>
+        <p>A unified, governed approach to analytics asset management — from intake to deployment</p>
+    </header>
+
+    <div class="container">
+        <!-- Executive Summary -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon">📋</div>
+                <h2>Executive Summary</h2>
+            </div>
+            
+            <div class="card">
+                <p>We're building an <strong>end-to-end AI-augmented delivery system</strong> that transforms how EOA handles analytics requests. Instead of scattered intake channels and manual governance, we're creating a unified micro-frontend on Backstage (Alchemy) that uses agentic AI to categorize, route, and track every request — with governance built in from day one.</p>
+            </div>
+
+            <div class="highlight-box">
+                <h4>The Core Insight</h4>
+                <p>As we automate delivery, we can't lose governance. Every asset created through this system is <strong>born with metadata</strong> — ownership, purpose, goal alignment, lifecycle stage — so we can always answer "what do we have?" and "how does it support our KPIs?"</p>
+            </div>
+        </section>
+
+        <!-- The Problem / Solution -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon">🔄</div>
+                <h2>The Transformation</h2>
+            </div>
+
+            <div class="comparison">
+                <div class="comparison-card before">
+                    <div class="comparison-label">Today</div>
+                    <h4>Scattered & Manual</h4>
+                    <ul>
+                        <li>Multiple intake channels (email, chat, forms)</li>
+                        <li>Manual triage and routing</li>
+                        <li>Spreadsheet-based tracking</li>
+                        <li>Documentation as afterthought</li>
+                        <li>Can't answer "what do we have?"</li>
+                        <li>No visibility into goal alignment</li>
+                    </ul>
+                </div>
+
+                <div class="comparison-card after">
+                    <div class="comparison-label">Vision</div>
+                    <h4>Unified & AI-Augmented</h4>
+                    <ul>
+                        <li>Single intake micro-frontend on Backstage</li>
+                        <li>AI-powered categorization and routing</li>
+                        <li>Structured asset inventory</li>
+                        <li>Governance built into the workflow</li>
+                        <li>Instant portfolio visibility</li>
+                        <li>Every asset tagged to 2026 T&O goals</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Architecture -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon">🏗️</div>
+                <h2>Architecture</h2>
+            </div>
+
+            <div class="architecture">
+<pre>
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        AI-AUGMENTED DELIVERY ECOSYSTEM                       │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│                    ┌──────────────────────────────────┐                     │
+│                    │       ALCHEMY (BACKSTAGE)        │                     │
+│                    │   ┌──────────────────────────┐   │                     │
+│                    │   │   EOA INTAKE             │   │                     │
+│                    │   │   MICRO-FRONTEND         │   │                     │
+│                    │   │   (React + A2A/A2UI)     │   │                     │
+│                    │   └────────────┬─────────────┘   │                     │
+│                    └────────────────┼─────────────────┘                     │
+│                                     │                                        │
+│         ┌───────────────────────────┼───────────────────────────┐           │
+│         │                           │                           │           │
+│         ▼                           ▼                           ▼           │
+│  ┌──────────────┐    ┌──────────────────┐    ┌────────────────────┐        │
+│  │   INTAKE     │    │   PROCESSING     │    │    DELIVERY        │        │
+│  │   AGENTS     │───▶│   LAYER          │───▶│    LAYER           │        │
+│  └──────────────┘    └──────────────────┘    └────────────────────┘        │
+│                              │                                              │
+│                              ▼                                              │
+│                    ┌──────────────────┐                                    │
+│                    │   GOVERNANCE     │ ◀───── Asset Inventory             │
+│                    │   LAYER          │        (This Project)              │
+│                    └──────────────────┘                                    │
+│                              │                                              │
+│                              ▼                                              │
+│                    ┌──────────────────┐                                    │
+│                    │   INTEGRATION    │  ServiceNow • JIRA • Confluence    │
+│                    │   FABRIC         │  Pathfinder • GitHub               │
+│                    └──────────────────┘                                    │
+│                                                                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+</pre>
+            </div>
+        </section>
+
+        <!-- The Five Layers -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon">📚</div>
+                <h2>The Five Layers</h2>
+            </div>
+
+            <div class="layer">
+                <div class="layer-number">1</div>
+                <div class="layer-content">
+                    <h3>Unified Intake (Micro-Frontend)</h3>
+                    <div class="subtitle">Hosted on Alchemy (Backstage)</div>
+                    <p>A single, agentic intake experience using Google A2A/A2UI patterns. The AI parses natural language requests, categorizes them, and collects structured metadata through a conversational interface. Built with React and our existing component libraries.</p>
+                    <div style="margin-top: 0.75rem;">
+                        <span class="tag blue">React</span>
+                        <span class="tag purple">A2A/A2UI</span>
+                        <span class="tag green">Backstage Plugin</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layer">
+                <div class="layer-number">2</div>
+                <div class="layer-content">
+                    <h3>AI Processing Layer</h3>
+                    <div class="subtitle">Categorization, Prioritization, Routing</div>
+                    <p>AI Concierge applies rules, ML models, and value methodology to score and route requests. Includes automatic documentation generation and warm handoff to human reviewers when needed.</p>
+                </div>
+            </div>
+
+            <div class="layer highlight">
+                <div class="layer-number">3</div>
+                <div class="layer-content">
+                    <h3>Governance Layer</h3>
+                    <div class="subtitle">Asset Inventory — This Project</div>
+                    <p>The governance spine that ensures every asset is tracked, owned, and aligned to goals. Captures decision-oriented metadata: ownership, purpose, criticality, lifecycle stage, and 2026 T&O goal alignment. Validates intake requirements and prevents ungoverned assets.</p>
+                </div>
+            </div>
+
+            <div class="layer">
+                <div class="layer-number">4</div>
+                <div class="layer-content">
+                    <h3>Delivery Layer</h3>
+                    <div class="subtitle">Build, Deploy, Notify</div>
+                    <p>AI agents assist with ETL optimization, dynamic report generation, and deployment automation. Jenkins CI/CD, GitHub Actions, and Webex notifications keep stakeholders informed.</p>
+                </div>
+            </div>
+
+            <div class="layer">
+                <div class="layer-number">5</div>
+                <div class="layer-content">
+                    <h3>Integration Fabric</h3>
+                    <div class="subtitle">Enterprise System Connectivity</div>
+                    <p>APIs to ServiceNow (tickets), JIRA (stories), Confluence (documentation), Pathfinder/Clarity (portfolio management), and GitHub (code). The micro-frontend orchestrates these through a unified backend.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strategic Goal Alignment -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon">🎯</div>
+                <h2>2026 T&O Goal Alignment</h2>
+            </div>
+
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Every asset tags to the strategic goals it supports, enabling instant portfolio analysis.</p>
+
+            <div class="grid grid-3">
+                <div class="goal-card">
+                    <div class="icon">📞</div>
+                    <h4>CSO</h4>
+                    <p>Customer Service Operations</p>
+                </div>
+                <div class="goal-card">
+                    <div class="icon">✅</div>
+                    <h4>CRO</h4>
+                    <p>Coverage Review Operations</p>
+                </div>
+                <div class="goal-card">
+                    <div class="icon">📄</div>
+                    <h4>EP&D</h4>
+                    <p>Enterprise Print & Distribution</p>
+                </div>
+                <div class="goal-card">
+                    <div class="icon">🤝</div>
+                    <h4>Client Implementation</h4>
+                    <p>Access to Care, rNPS</p>
+                </div>
+                <div class="goal-card">
+                    <div class="icon">⚡</div>
+                    <h4>Operational Excellence</h4>
+                    <p>Cross-cutting efficiency</p>
+                </div>
+                <div class="goal-card">
+                    <div class="icon">💰</div>
+                    <h4>Financial Performance</h4>
+                    <p>Cost reduction</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Value -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon">💎</div>
+                <h2>Value Delivered</h2>
+            </div>
+
+            <div class="card">
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Question</th>
+                                <th>Before</th>
+                                <th>After</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>"What analytics assets do we have?"</td>
+                                <td style="color: var(--text-muted);">"I'll need a few days to compile..."</td>
+                                <td style="color: var(--accent-green);">"142 assets across 4 operating lanes"</td>
+                            </tr>
+                            <tr>
+                                <td>"How does your work support our KPIs?"</td>
+                                <td style="color: var(--text-muted);">"Let me put together a narrative..."</td>
+                                <td style="color: var(--accent-green);">"89% aligned — 23 support CSO, 18 support CRO"</td>
+                            </tr>
+                            <tr>
+                                <td>"Who owns the Claims Dashboard?"</td>
+                                <td style="color: var(--text-muted);">"I think it's... let me check..."</td>
+                                <td style="color: var(--accent-green);">"Product: Jane Smith. Tech: John Doe."</td>
+                            </tr>
+                            <tr>
+                                <td>"What should we retire?"</td>
+                                <td style="color: var(--text-muted);">"That's a good question..."</td>
+                                <td style="color: var(--accent-green);">"14 assets flagged — 8 duplicates, 6 low usage"</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Status -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon">📊</div>
+                <h2>Current Status</h2>
+            </div>
+
+            <div class="card">
+                <ul class="status-list">
+                    <li class="status-item">
+                        <div class="status-check done">✓</div>
+                        <span class="status-text done">Asset schema and metadata model defined</span>
+                    </li>
+                    <li class="status-item">
+                        <div class="status-check done">✓</div>
+                        <span class="status-text done">Intake validation rules implemented</span>
+                    </li>
+                    <li class="status-item">
+                        <div class="status-check done">✓</div>
+                        <span class="status-text done">Strategic goal alignment (2026 T&O)</span>
+                    </li>
+                    <li class="status-item">
+                        <div class="status-check done">✓</div>
+                        <span class="status-text done">Backstage integration scaffolded</span>
+                    </li>
+                    <li class="status-item">
+                        <div class="status-check done">✓</div>
+                        <span class="status-text done">Agentic intake form prototype</span>
+                    </li>
+                    <li class="status-item">
+                        <div class="status-check done">✓</div>
+                        <span class="status-text done">Micro-frontend architecture documented</span>
+                    </li>
+                    <li class="status-item">
+                        <div class="status-check progress">◐</div>
+                        <span class="status-text">Pilot with Claims domain</span>
+                    </li>
+                    <li class="status-item">
+                        <div class="status-check pending">○</div>
+                        <span class="status-text pending">Connect to live Alchemy instance</span>
+                    </li>
+                    <li class="status-item">
+                        <div class="status-check pending">○</div>
+                        <span class="status-text pending">First portfolio report to leadership</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- The Ask -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon">🙋</div>
+                <h2>The Ask</h2>
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <h3>1. Support the Pilot</h3>
+                    <p>Let us inventory Claims domain assets and deliver the first portfolio report demonstrating goal alignment.</p>
+                </div>
+                <div class="card">
+                    <h3>2. Enable Backstage Access</h3>
+                    <p>We need API credentials and plugin deployment access to connect the governance layer to Alchemy.</p>
+                </div>
+                <div class="card">
+                    <h3>3. Socialize the Vision</h3>
+                    <p>This repo is one piece of a larger transformation. Help us communicate the end-to-end value to stakeholders.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Philosophy -->
+        <div class="quote">
+            <p>"We're not building tools. We're building a system where AI handles the toil and humans focus on decisions. The asset inventory ensures we don't lose governance in the automation."</p>
+            <cite>— Project Philosophy</cite>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>EOA AI-Augmented Delivery • Asset Inventory Project • Last updated: February 2026</p>
+    </footer>
+</body>
+</html>
