@@ -8,161 +8,169 @@
     <title>Will Austin - Resume</title>
     <link rel="icon" type="image/x-icon" href="../favicon.ico" />
     
+    <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
+    <!-- Base Styles -->
+    <link href="../styles.css" rel="stylesheet" />
+    <link href="portfolio.css" rel="stylesheet" />
+    
+    <!-- Resume-specific print styles -->
     <style>
-        :root {
-            --color-primary: #0d7377;
-            --color-text: #1a1a2e;
-            --color-text-secondary: #4a4a5a;
-            --color-border: #e0e0e0;
-            --color-bg-light: #f8f9fa;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: var(--color-text);
-            line-height: 1.5;
-            background: white;
-            font-size: 11pt;
+        /* Resume Page Overrides */
+        .resume-wrapper {
+            min-height: 100vh;
+            padding: 120px 20px 40px;
         }
 
         .resume {
-            max-width: 8.5in;
+            max-width: 850px;
             margin: 0 auto;
-            padding: 0.5in;
             background: white;
+            color: #1a1a2e;
+            padding: 48px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .resume * {
+            color: #1a1a2e;
         }
 
         /* Header */
         .resume-header {
             text-align: center;
-            padding-bottom: 16px;
-            border-bottom: 2px solid var(--color-primary);
-            margin-bottom: 16px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #0d7377;
+            margin-bottom: 24px;
         }
 
         .resume-name {
-            font-size: 28pt;
+            font-size: 2.5rem;
             font-weight: 700;
-            color: var(--color-primary);
-            margin-bottom: 4px;
+            color: #0d7377 !important;
+            margin-bottom: 8px;
         }
 
         .resume-title {
-            font-size: 12pt;
+            font-size: 1.1rem;
             font-weight: 500;
-            color: var(--color-text-secondary);
-            margin-bottom: 8px;
+            color: #4a4a5a !important;
+            margin-bottom: 12px;
         }
 
         .resume-contact {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            font-size: 10pt;
-            color: var(--color-text-secondary);
+            flex-wrap: wrap;
+            gap: 8px 20px;
+            font-size: 0.9rem;
+            color: #4a4a5a !important;
         }
 
         .resume-contact a {
-            color: var(--color-primary);
+            color: #0d7377 !important;
             text-decoration: none;
+        }
+
+        .resume-contact a:hover {
+            text-decoration: underline;
         }
 
         /* Sections */
         .resume-section {
-            margin-bottom: 16px;
+            margin-bottom: 24px;
         }
 
         .section-title {
-            font-size: 12pt;
+            font-size: 1rem;
             font-weight: 700;
-            color: var(--color-primary);
+            color: #0d7377 !important;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            padding-bottom: 4px;
-            border-bottom: 1px solid var(--color-border);
-            margin-bottom: 10px;
+            letter-spacing: 1px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 16px;
         }
 
         /* Summary */
         .summary-text {
-            font-size: 10.5pt;
-            color: var(--color-text-secondary);
-            line-height: 1.6;
+            font-size: 0.95rem;
+            color: #4a4a5a !important;
+            line-height: 1.7;
         }
 
         /* Competencies */
         .competencies-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 6px 20px;
+            gap: 8px 24px;
         }
 
         .competency-item {
-            font-size: 10pt;
+            font-size: 0.9rem;
+            color: #1a1a2e !important;
             display: flex;
             align-items: baseline;
-            gap: 6px;
+            gap: 8px;
         }
 
         .competency-item::before {
             content: "▸";
-            color: var(--color-primary);
-            font-size: 8pt;
+            color: #0d7377;
+            font-size: 0.8rem;
         }
 
         /* Experience */
         .experience-item {
-            margin-bottom: 14px;
+            margin-bottom: 20px;
         }
 
         .experience-header {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 2px;
-        }
-
-        .experience-role {
-            font-size: 11pt;
-            font-weight: 600;
-        }
-
-        .experience-date {
-            font-size: 10pt;
-            color: var(--color-text-secondary);
-        }
-
-        .experience-company {
-            font-size: 10.5pt;
-            color: var(--color-primary);
-            font-weight: 500;
+            flex-wrap: wrap;
+            gap: 8px;
             margin-bottom: 4px;
         }
 
+        .experience-role {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1a1a2e !important;
+        }
+
+        .experience-date {
+            font-size: 0.85rem;
+            color: #4a4a5a !important;
+        }
+
+        .experience-company {
+            font-size: 0.95rem;
+            color: #0d7377 !important;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
         .experience-description {
-            font-size: 10pt;
-            color: var(--color-text-secondary);
-            line-height: 1.5;
+            font-size: 0.9rem;
+            color: #4a4a5a !important;
+            line-height: 1.6;
         }
 
         .experience-description ul {
-            margin-left: 16px;
-            margin-top: 4px;
+            margin-left: 20px;
+            margin-top: 8px;
         }
 
         .experience-description li {
-            margin-bottom: 2px;
+            margin-bottom: 4px;
         }
 
         /* Skills */
@@ -173,11 +181,12 @@
         }
 
         .skill-tag {
-            background: var(--color-bg-light);
-            border: 1px solid var(--color-border);
-            padding: 2px 10px;
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            padding: 4px 12px;
             border-radius: 4px;
-            font-size: 9pt;
+            font-size: 0.8rem;
+            color: #1a1a2e !important;
         }
 
         /* Education */
@@ -185,70 +194,119 @@
             display: flex;
             justify-content: space-between;
             align-items: baseline;
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
         .education-degree {
             font-weight: 600;
-            font-size: 10.5pt;
+            font-size: 0.95rem;
+            color: #1a1a2e !important;
         }
 
         .education-school {
-            color: var(--color-primary);
-            font-size: 10pt;
+            color: #0d7377 !important;
+            font-size: 0.9rem;
         }
 
         .education-year {
-            font-size: 10pt;
-            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            color: #4a4a5a !important;
         }
 
-        /* Print Button */
+        /* Print Controls */
         .print-controls {
-            position: fixed;
-            top: 20px;
-            right: 20px;
+            max-width: 850px;
+            margin: 0 auto 20px;
             display: flex;
-            gap: 10px;
-            z-index: 1000;
+            justify-content: flex-end;
+            gap: 12px;
         }
 
         .print-btn {
             padding: 12px 24px;
-            background: var(--color-primary);
-            color: white;
+            background: var(--gradient-primary);
+            color: var(--color-bg);
             border: none;
-            border-radius: 8px;
+            border-radius: var(--radius-full);
             font-family: inherit;
-            font-size: 14px;
+            font-size: 0.9rem;
             font-weight: 600;
             cursor: pointer;
             display: flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            transition: all 0.2s;
+            transition: all var(--transition-base);
+            text-decoration: none;
         }
 
         .print-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+            box-shadow: var(--shadow-glow);
         }
 
         .back-btn {
-            background: #1a1a2e;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            color: var(--color-text);
+        }
+
+        .back-btn:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+            box-shadow: none;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .resume {
+                padding: 24px;
+            }
+
+            .resume-name {
+                font-size: 1.8rem;
+            }
+
+            .competencies-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .education-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .print-controls {
+                flex-direction: column;
+            }
         }
 
         /* Print Styles */
         @media print {
-            .print-controls {
-                display: none;
+            body {
+                background: white !important;
             }
 
-            body {
-                background: white;
+            .bg-animation,
+            .portfolio-nav,
+            .print-controls,
+            .portfolio-footer {
+                display: none !important;
+            }
+
+            .resume-wrapper {
+                padding: 0;
+                min-height: auto;
             }
 
             .resume {
+                box-shadow: none;
+                border-radius: 0;
                 padding: 0;
                 max-width: 100%;
             }
@@ -258,232 +316,256 @@
                 size: letter;
             }
         }
-
-        /* Screen readability */
-        @media screen {
-            body {
-                background: #f0f0f0;
-                padding: 20px;
-            }
-
-            .resume {
-                box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-                border-radius: 4px;
-            }
-        }
     </style>
 </head>
 
 <body>
-    <!-- Print Controls -->
-    <div class="print-controls">
-        <a href="index.html" class="print-btn back-btn">
-            ← Back to Portfolio
-        </a>
-        <button class="print-btn" onclick="window.print()">
-            📄 Save as PDF
-        </button>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+        <div class="grid-overlay"></div>
     </div>
 
-    <div class="resume">
-        <!-- Header -->
-        <header class="resume-header">
-            <h1 class="resume-name">Will Austin</h1>
-            <p class="resume-title">Senior Software Engineering Director | Engineering & Technology Leader</p>
-            <div class="resume-contact">
-                <span>Knoxville, Tennessee</span>
-                <span>•</span>
-                <a href="mailto:will@willaustin.net">will@willaustin.net</a>
-                <span>•</span>
-                <a href="https://www.linkedin.com/in/williamaustin/">linkedin.com/in/williamaustin</a>
-            </div>
-        </header>
+    <!-- Navigation -->
+    <nav class="portfolio-nav">
+        <div class="portfolio-nav-container">
+            <a href="index.html" class="portfolio-nav-logo">
+                <i class="fas fa-arrow-left"></i>
+                <span>Portfolio</span>
+            </a>
+            <ul class="portfolio-nav-links">
+                <li><a href="experience.html" class="portfolio-nav-link">Experience</a></li>
+                <li><a href="impact.html" class="portfolio-nav-link">Impact</a></li>
+                <li><a href="skills.html" class="portfolio-nav-link">Skills</a></li>
+                <li><a href="resume.html" class="portfolio-nav-link active">Resume</a></li>
+                <li><a href="https://www.linkedin.com/in/williamaustin/" target="_blank" rel="noopener" class="portfolio-nav-link">
+                    <i class="fab fa-linkedin-in"></i>
+                </a></li>
+            </ul>
+        </div>
+    </nav>
 
-        <!-- Executive Summary -->
-        <section class="resume-section">
-            <h2 class="section-title">Executive Summary</h2>
-            <p class="summary-text">
-                Senior engineering leader with 20+ years of experience delivering reporting, analytical data enablement, 
-                full-stack engineering, DevOps, and SaaS solutions in healthcare and enterprise environments. Currently leading 
-                operational analytics across client, claims, provider, and regulatory/compliance domains with deep expertise in 
-                clinical informatics, commercial Rx, and HEDIS quality measures—including driving digital measures for interoperability 
-                to maintain NCQA compliance. Known for building high-performing teams and driving modern delivery capabilities 
-                across AI, automation, large-scale data, APIs, and infrastructure enablement.
-            </p>
-        </section>
+    <!-- Resume Content -->
+    <div class="resume-wrapper">
+        <!-- Print Controls -->
+        <div class="print-controls">
+            <a href="index.html" class="print-btn back-btn">
+                <i class="fas fa-arrow-left"></i>
+                Back to Portfolio
+            </a>
+            <button class="print-btn" onclick="window.print()">
+                <i class="fas fa-file-pdf"></i>
+                Save as PDF
+            </button>
+        </div>
 
-        <!-- Core Competencies -->
-        <section class="resume-section">
-            <h2 class="section-title">Core Competencies</h2>
-            <div class="competencies-grid">
-                <div class="competency-item">Clinical Informatics & HEDIS Quality Measures</div>
-                <div class="competency-item">Commercial Rx / Pharmacy Benefit Analytics</div>
-                <div class="competency-item">Operational Analytics (Client, Claims, Provider)</div>
-                <div class="competency-item">Regulatory & Compliance Reporting</div>
-                <div class="competency-item">Engineering Leadership & Org Building</div>
-                <div class="competency-item">AI Enablement & Automation Strategy</div>
-                <div class="competency-item">DevOps / Delivery Acceleration & SDLC Modernization</div>
-                <div class="competency-item">API Platforms, Batch + Streaming Data Processing</div>
-                <div class="competency-item">Data Enablement, BI/Analytics, Data Warehousing</div>
-                <div class="competency-item">Cloud Architecture & Infrastructure Automation</div>
-            </div>
-        </section>
+        <div class="resume">
+            <!-- Header -->
+            <header class="resume-header">
+                <h1 class="resume-name">Will Austin</h1>
+                <p class="resume-title">Senior Software Engineering Director | Engineering & Technology Leader</p>
+                <div class="resume-contact">
+                    <span>Knoxville, Tennessee</span>
+                    <span>•</span>
+                    <a href="mailto:will@willaustin.net">will@willaustin.net</a>
+                    <span>•</span>
+                    <a href="https://www.linkedin.com/in/williamaustin/" target="_blank">linkedin.com/in/williamaustin</a>
+                </div>
+            </header>
 
-        <!-- Professional Experience -->
-        <section class="resume-section">
-            <h2 class="section-title">Professional Experience</h2>
+            <!-- Executive Summary -->
+            <section class="resume-section">
+                <h2 class="section-title">Executive Summary</h2>
+                <p class="summary-text">
+                    Senior engineering leader with 20+ years of experience delivering reporting, analytical data enablement, 
+                    full-stack engineering, DevOps, and SaaS solutions in healthcare and enterprise environments. Currently leading 
+                    operational analytics across client, claims, provider, and regulatory/compliance domains with deep expertise in 
+                    clinical informatics, commercial Rx, and HEDIS quality measures—including driving digital measures for interoperability 
+                    to maintain NCQA compliance. Known for building high-performing teams and driving modern delivery capabilities 
+                    across AI, automation, large-scale data, APIs, and infrastructure enablement.
+                </p>
+            </section>
 
-            <div class="experience-item">
-                <div class="experience-header">
-                    <span class="experience-role">Sr. Software Engineering Director</span>
-                    <span class="experience-date">Dec 2022 – Present</span>
+            <!-- Core Competencies -->
+            <section class="resume-section">
+                <h2 class="section-title">Core Competencies</h2>
+                <div class="competencies-grid">
+                    <div class="competency-item">Clinical Informatics & HEDIS Quality Measures</div>
+                    <div class="competency-item">Commercial Rx / Pharmacy Benefit Analytics</div>
+                    <div class="competency-item">Operational Analytics (Client, Claims, Provider)</div>
+                    <div class="competency-item">Regulatory & Compliance Reporting</div>
+                    <div class="competency-item">Engineering Leadership & Org Building</div>
+                    <div class="competency-item">AI Enablement & Automation Strategy</div>
+                    <div class="competency-item">DevOps / Delivery Acceleration & SDLC Modernization</div>
+                    <div class="competency-item">API Platforms, Batch + Streaming Data Processing</div>
+                    <div class="competency-item">Data Enablement, BI/Analytics, Data Warehousing</div>
+                    <div class="competency-item">Cloud Architecture & Infrastructure Automation</div>
                 </div>
-                <div class="experience-company">Evernorth Health Services</div>
-                <div class="experience-description">
-                    <ul>
-                        <li>Lead organization delivering innovative reporting, analytical data enablement, full-stack engineering, DevOps, and SaaS solutions for healthcare</li>
-                        <li>Run operational analytics spanning client, claims, provider, and regulatory/compliance domains</li>
-                        <li>Lead commercial Rx teams and HEDIS quality reporting—including driving digital measures for interoperability to maintain NCQA compliance</li>
-                        <li>Drive modernization for enterprise delivery: unified intake, AI-assisted requirements capture, and prioritization/value methodology</li>
-                        <li>Sponsor agentic workflow enablement integrating Agent Core with GitOps and cost governance concepts</li>
-                    </ul>
-                </div>
-            </div>
+            </section>
 
-            <div class="experience-item">
-                <div class="experience-header">
-                    <span class="experience-role">Software Engineering Director</span>
-                    <span class="experience-date">Dec 2020 – Dec 2022</span>
-                </div>
-                <div class="experience-company">Cigna Healthcare</div>
-                <div class="experience-description">
-                    Directed software engineering teams focused on analytics and reporting platforms. Built scalable data solutions supporting healthcare operations.
-                </div>
-            </div>
+            <!-- Professional Experience -->
+            <section class="resume-section">
+                <h2 class="section-title">Professional Experience</h2>
 
-            <div class="experience-item">
-                <div class="experience-header">
-                    <span class="experience-role">Software Engineering Senior Manager</span>
-                    <span class="experience-date">Apr 2019 – Dec 2020</span>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <span class="experience-role">Sr. Software Engineering Director</span>
+                        <span class="experience-date">Dec 2022 – Present</span>
+                    </div>
+                    <div class="experience-company">Evernorth Health Services</div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Lead organization delivering innovative reporting, analytical data enablement, full-stack engineering, DevOps, and SaaS solutions for healthcare</li>
+                            <li>Run operational analytics spanning client, claims, provider, and regulatory/compliance domains</li>
+                            <li>Lead commercial Rx teams and HEDIS quality reporting—including driving digital measures for interoperability to maintain NCQA compliance</li>
+                            <li>Drive modernization for enterprise delivery: unified intake, AI-assisted requirements capture, and prioritization/value methodology</li>
+                            <li>Sponsor agentic workflow enablement integrating Agent Core with GitOps and cost governance concepts</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="experience-company">Cigna Healthcare</div>
-                <div class="experience-description">
-                    Led engineering teams delivering critical analytics and reporting solutions. Established DevOps practices and modern development methodologies.
-                </div>
-            </div>
 
-            <div class="experience-item">
-                <div class="experience-header">
-                    <span class="experience-role">Director of Data and Analytics Integration</span>
-                    <span class="experience-date">Mar 2018 – Apr 2019</span>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <span class="experience-role">Software Engineering Director</span>
+                        <span class="experience-date">Dec 2020 – Dec 2022</span>
+                    </div>
+                    <div class="experience-company">Cigna Healthcare</div>
+                    <div class="experience-description">
+                        Directed software engineering teams focused on analytics and reporting platforms. Built scalable data solutions supporting healthcare operations.
+                    </div>
                 </div>
-                <div class="experience-company">Discovery Inc</div>
-                <div class="experience-description">
-                    Led integration of data and analytics platforms following Scripps Networks acquisition. Enabled advanced reporting and BI for global media operations.
-                </div>
-            </div>
 
-            <div class="experience-item">
-                <div class="experience-header">
-                    <span class="experience-role">Director of Data Applications</span>
-                    <span class="experience-date">Jan 2015 – Mar 2018</span>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <span class="experience-role">Software Engineering Senior Manager</span>
+                        <span class="experience-date">Apr 2019 – Dec 2020</span>
+                    </div>
+                    <div class="experience-company">Cigna Healthcare</div>
+                    <div class="experience-description">
+                        Led engineering teams delivering critical analytics and reporting solutions. Established DevOps practices and modern development methodologies.
+                    </div>
                 </div>
-                <div class="experience-company">Scripps Networks Interactive</div>
-                <div class="experience-description">
-                    Directed development of data applications for HGTV, Food Network, Travel Channel, and 85+ lifestyle media brands.
-                </div>
-            </div>
 
-            <div class="experience-item">
-                <div class="experience-header">
-                    <span class="experience-role">Database Marketing Director</span>
-                    <span class="experience-date">Mar 2012 – Dec 2014</span>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <span class="experience-role">Director of Data and Analytics Integration</span>
+                        <span class="experience-date">Mar 2018 – Apr 2019</span>
+                    </div>
+                    <div class="experience-company">Discovery Inc</div>
+                    <div class="experience-description">
+                        Led integration of data and analytics platforms following Scripps Networks acquisition. Enabled advanced reporting and BI for global media operations.
+                    </div>
                 </div>
-                <div class="experience-company">Scripps Networks Interactive</div>
-                <div class="experience-description">
-                    Managed database marketing initiatives leveraging analytics to drive audience engagement and growth.
-                </div>
-            </div>
 
-            <div class="experience-item">
-                <div class="experience-header">
-                    <span class="experience-role">Director / Manager of Business Intelligence</span>
-                    <span class="experience-date">Apr 2007 – Mar 2012</span>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <span class="experience-role">Director of Data Applications</span>
+                        <span class="experience-date">Jan 2015 – Mar 2018</span>
+                    </div>
+                    <div class="experience-company">Scripps Networks Interactive</div>
+                    <div class="experience-description">
+                        Directed development of data applications for HGTV, Food Network, Travel Channel, and 85+ lifestyle media brands.
+                    </div>
                 </div>
-                <div class="experience-company">The E.W. Scripps Company</div>
-                <div class="experience-description">
-                    Oversaw BI and analytics functions. Pioneered web analytics adoption across newspaper digital properties.
-                </div>
-            </div>
 
-            <div class="experience-item">
-                <div class="experience-header">
-                    <span class="experience-role">Business Intelligence and Analytics Analyst</span>
-                    <span class="experience-date">Apr 2004 – Mar 2007</span>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <span class="experience-role">Database Marketing Director</span>
+                        <span class="experience-date">Mar 2012 – Dec 2014</span>
+                    </div>
+                    <div class="experience-company">Scripps Networks Interactive</div>
+                    <div class="experience-description">
+                        Managed database marketing initiatives leveraging analytics to drive audience engagement and growth.
+                    </div>
                 </div>
-                <div class="experience-company">Edfinancial Services</div>
-                <div class="experience-description">
-                    Developed automated reporting solutions for student loan portfolio management and regulatory compliance.
-                </div>
-            </div>
 
-            <div class="experience-item">
-                <div class="experience-header">
-                    <span class="experience-role">Sales and Marketing Manager</span>
-                    <span class="experience-date">May 2000 – Mar 2004</span>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <span class="experience-role">Director / Manager of Business Intelligence</span>
+                        <span class="experience-date">Apr 2007 – Mar 2012</span>
+                    </div>
+                    <div class="experience-company">The E.W. Scripps Company</div>
+                    <div class="experience-description">
+                        Oversaw BI and analytics functions. Pioneered web analytics adoption across newspaper digital properties.
+                    </div>
                 </div>
-                <div class="experience-company">AT&T</div>
-                <div class="experience-description">
-                    Managed sales and marketing initiatives in telecommunications. Built foundation in data-driven decision making.
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <span class="experience-role">Business Intelligence and Analytics Analyst</span>
+                        <span class="experience-date">Apr 2004 – Mar 2007</span>
+                    </div>
+                    <div class="experience-company">Edfinancial Services</div>
+                    <div class="experience-description">
+                        Developed automated reporting solutions for student loan portfolio management and regulatory compliance.
+                    </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Technical Skills -->
-        <section class="resume-section">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-list">
-                <span class="skill-tag">HEDIS Measures</span>
-                <span class="skill-tag">Clinical Informatics</span>
-                <span class="skill-tag">NCQA Compliance</span>
-                <span class="skill-tag">Pharmacy/Rx Analytics</span>
-                <span class="skill-tag">Claims Analytics</span>
-                <span class="skill-tag">Microsoft SQL Server</span>
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">ETL Tools</span>
-                <span class="skill-tag">REST APIs</span>
-                <span class="skill-tag">AWS</span>
-                <span class="skill-tag">Docker</span>
-                <span class="skill-tag">Kubernetes</span>
-                <span class="skill-tag">Terraform</span>
-                <span class="skill-tag">CI/CD</span>
-                <span class="skill-tag">Data Warehousing</span>
-                <span class="skill-tag">HIPAA Compliance</span>
-            </div>
-        </section>
-
-        <!-- Education -->
-        <section class="resume-section">
-            <h2 class="section-title">Education</h2>
-            <div class="education-item">
-                <div>
-                    <span class="education-degree">B.S., Business Administration (Management)</span>
-                    <span class="education-school"> — Haslam College of Business, University of Tennessee</span>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <span class="experience-role">Sales and Marketing Manager</span>
+                        <span class="experience-date">May 2000 – Mar 2004</span>
+                    </div>
+                    <div class="experience-company">AT&T</div>
+                    <div class="experience-description">
+                        Managed sales and marketing initiatives in telecommunications. Built foundation in data-driven decision making.
+                    </div>
                 </div>
-                <span class="education-year">2000</span>
-            </div>
-        </section>
+            </section>
 
-        <!-- Certifications -->
-        <section class="resume-section">
-            <h2 class="section-title">Certifications</h2>
-            <div class="skills-list">
-                <span class="skill-tag">Microsoft Certified Systems Engineer (MCSE)</span>
-                <span class="skill-tag">Microsoft Office User Specialist (MOUS)</span>
-                <span class="skill-tag">Transformative Leadership - EQ-i 2.0</span>
-                <span class="skill-tag">The Leadership Circle - LCP 360</span>
-            </div>
-        </section>
+            <!-- Technical Skills -->
+            <section class="resume-section">
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="skills-list">
+                    <span class="skill-tag">HEDIS Measures</span>
+                    <span class="skill-tag">Clinical Informatics</span>
+                    <span class="skill-tag">NCQA Compliance</span>
+                    <span class="skill-tag">Pharmacy/Rx Analytics</span>
+                    <span class="skill-tag">Claims Analytics</span>
+                    <span class="skill-tag">Microsoft SQL Server</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">ETL Tools</span>
+                    <span class="skill-tag">REST APIs</span>
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">Kubernetes</span>
+                    <span class="skill-tag">Terraform</span>
+                    <span class="skill-tag">CI/CD</span>
+                    <span class="skill-tag">Data Warehousing</span>
+                    <span class="skill-tag">HIPAA Compliance</span>
+                </div>
+            </section>
+
+            <!-- Education -->
+            <section class="resume-section">
+                <h2 class="section-title">Education</h2>
+                <div class="education-item">
+                    <div>
+                        <span class="education-degree">B.S., Business Administration (Management)</span>
+                        <span class="education-school"> — Haslam College of Business, University of Tennessee</span>
+                    </div>
+                    <span class="education-year">2000</span>
+                </div>
+            </section>
+
+            <!-- Certifications -->
+            <section class="resume-section">
+                <h2 class="section-title">Certifications</h2>
+                <div class="skills-list">
+                    <span class="skill-tag">Microsoft Certified Systems Engineer (MCSE)</span>
+                    <span class="skill-tag">Microsoft Office User Specialist (MOUS)</span>
+                    <span class="skill-tag">Transformative Leadership - EQ-i 2.0</span>
+                    <span class="skill-tag">The Leadership Circle - LCP 360</span>
+                </div>
+            </section>
+        </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="portfolio-footer">
+        <p>&copy; 2026 Will Austin. Knoxville, Tennessee.</p>
+    </footer>
 </body>
 </html>
