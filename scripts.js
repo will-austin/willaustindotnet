@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollAnimations();
     initTimelineProgress();
     initSmoothScroll();
+    initTestimonialsToggle();
 });
 
 /**
@@ -21,11 +22,11 @@ function initTypingEffect() {
     if (!typingElement) return;
 
     const phrases = [
-        'build AI-powered analytics platforms',
-        'lead high-performing engineering teams',
-        'transform data into actionable insights',
-        'architect scalable cloud solutions',
-        'drive innovation in healthcare tech'
+        'build high-performing engineering organizations',
+        'align engineering with enterprise priorities',
+        'hire and develop exceptional technologists',
+        'lead through modernization and large-scale delivery',
+        'turn complex problems into outcomes'
     ];
 
     let phraseIndex = 0;
@@ -210,6 +211,22 @@ function initSmoothScroll() {
                 });
             }
         });
+    });
+}
+
+/**
+ * Expand additional testimonials without leaving the page
+ */
+function initTestimonialsToggle() {
+    const button = document.getElementById('toggleTestimonials');
+    const panel = document.getElementById('moreTestimonials');
+    if (!button || !panel) return;
+
+    button.addEventListener('click', () => {
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        button.setAttribute('aria-expanded', String(!expanded));
+        panel.hidden = expanded;
+        button.textContent = expanded ? 'More testimonials' : 'Fewer testimonials';
     });
 }
 
