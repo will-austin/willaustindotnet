@@ -1,0 +1,31 @@
+name: Deploy to S3
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:  # lets you run it from github.com → Actions
+permissions:
+  id-token: write   # for OIDC
+  contents: read
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: us-east-1
+      - name: Sync site to S3
+        run: |
+          aws s3 sync . s3://willaustin-net-site \
+            --exclude ".git/*" \
+            --exclude ".github/*" \
+            --exclude ".DS_Store" \
+            --exclude "README.md" \
+            --delete
+      - name: Invalidate CloudFront
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
+            --paths "/*"
