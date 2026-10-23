@@ -14,10 +14,9 @@
     --color-primary-dim: rgba(0, 212, 170, 0.1);
     --color-primary-glow: rgba(0, 212, 170, 0.4);
     
-    /* Tennessee orange — alma mater */
-    --color-secondary: #FF8200;
-    --color-secondary-dim: rgba(255, 130, 0, 0.12);
-    --color-secondary-glow: rgba(255, 130, 0, 0.55);
+    --color-secondary: #6366f1;
+    --color-secondary-dim: rgba(99, 102, 241, 0.12);
+    --color-secondary-glow: rgba(99, 102, 241, 0.55);
     --color-accent: #f472b6;
     
     --color-text: #ffffff;
@@ -28,7 +27,7 @@
     --color-border-hover: rgba(255, 255, 255, 0.15);
     
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, #00d4aa 0%, #FF8200 100%);
+    --gradient-primary: linear-gradient(135deg, #00d4aa 0%, #6366f1 100%);
     --gradient-bg: radial-gradient(ellipse at top, #1a1a2e 0%, #0a0a0f 50%);
     --gradient-card: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
     
@@ -1962,19 +1961,20 @@ img {
     transition: color var(--transition-base), filter var(--transition-base);
 }
 
+/* Tennessee orange — alma mater */
 .location-badge:hover {
-    color: var(--color-secondary);
-    border-color: var(--color-secondary);
-    background: var(--color-secondary-dim);
+    color: #FF8200;
+    border-color: #FF8200;
+    background: rgba(255, 130, 0, 0.12);
     box-shadow:
-        0 0 20px var(--color-secondary-glow),
+        0 0 20px rgba(255, 130, 0, 0.55),
         0 0 40px rgba(255, 130, 0, 0.25);
-    text-shadow: 0 0 18px var(--color-secondary-glow);
+    text-shadow: 0 0 18px rgba(255, 130, 0, 0.55);
 }
 
 .location-badge:hover i {
-    color: var(--color-secondary);
-    filter: drop-shadow(0 0 8px var(--color-secondary-glow));
+    color: #FF8200;
+    filter: drop-shadow(0 0 8px rgba(255, 130, 0, 0.55));
 }
 
 /* ============================================
